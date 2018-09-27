@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'role:admin']], function () {;
     Route::resource('Instansi','InstansiController');
+    Route::resource('mou','mouController');
 });
 Auth::routes();
 Route::get('wes','frontendController@index');

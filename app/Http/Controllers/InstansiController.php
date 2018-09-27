@@ -41,11 +41,18 @@ class InstansiController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'instansi' => 'required|',
-            'kerjasama' => 'required|',
-            'mulai' => 'required|',
-            'berakhir' => 'required|',
-                 'manfaat'=>'required|'
+            'namainstansi' => 'required|',
+            'jenisinstansi' => 'required|',
+            'alamat' => 'required|',
+            'kota' => 'required|',
+            'provinsi'=>'required',
+            'kodepos'=>'required',
+            'namapemimpin'=>'required',
+            'jabatan'=>'required',
+            'nope'=>'required',
+            'email'=>'required',
+            'web'=>'required',
+            'fax'=>'required'
             ]);
         $Instansi = new Instansi;
         $Instansi->instansi = $request->instansi;
@@ -98,18 +105,33 @@ class InstansiController extends Controller
     public function update(Request $request,  $id)
     {
         $this->validate($request,[
-            'instansi' => 'required|',
-            'kerjasama' => 'required|',
-            'mulai' => 'required|',
-            'berakhir' => 'required|',
-            'manfaat'=>'required'
+            'namainstansi' => 'required|',
+            'jenisinstansi' => 'required|',
+            'alamat' => 'required|',
+            'kota' => 'required|',
+            'provinsi'=>'required',
+            'kodepos'=>'required',
+            'namapemimpin'=>'required',
+            'jabatan'=>'required',
+            'nope'=>'required',
+            'email'=>'required',
+            'web'=>'required',
+            'fax'=>'required'  
              ]);
         $Instansi = Instansi::findOrFail($id);
-        $Instansi->instansi = $request->instansi;
-        $Instansi->kerjasama = $request->kerjasama;
-        $Instansi->mulai = $request->mulai;
-        $Instansi->berakhir = $request->berakhir;
-        $Instansi->manfaat = $request->manfaat;
+        $Instansi->namainstansi = $request->namainstansi;
+        $Instansi->jenisinstansi = $request->jenisinstansi;
+        $Instansi->alamat = $request->alamat;
+        $Instansi->kota = $request->kota;
+        $Instansi->provinsi = $request->provinsi;
+        $Instansi->kodepos = $request->kodepos;
+        $Instansi->jabatan = $request->jabatan;
+        $Instansi->nope = $request->nope;
+        $Instansi->email = $request->email;
+        $Instansi->web = $request->web; 
+        $Instansi->fax = $request->fax;
+       
+       
        
         $Instansi->save();
         Session::flash("flash_notification", [
